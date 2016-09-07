@@ -7,7 +7,7 @@ exports.run = (api, event) => {
     }
 
     let ac = event.arguments[1];
-	if (ac.length >= 3 && ac.length <= 15 && api.random([true, false]) && /[a-zA-Z]/.test(ac)) {
+	if (ac.length >= 3 && ac.length <= 15 && api.random([true, false]) && /^[a-zA-Z]+$/.test(ac)) {
 		// method 1 - will probably produce better acronyms but has length limits and cant deal with numbers/punctuation
 		maker.create(ac, (err, res) => {
 			if (err) {

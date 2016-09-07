@@ -7,8 +7,8 @@ exports.run = (api, event) => {
     }
 
     let ac = event.arguments[1];
-	if (ac.length >= 3 && ac.length <= 15 && api.random([true, false])) {
-		// method 1
+	if (ac.length >= 3 && ac.length <= 15 && api.random([true, false]) && !/[0-9]/.test(ac)) {
+		// method 1 - will probably produce better acronyms but has length limits and cant deal with numbers
 		maker.create(ac, (err, res) => {
 			if (err) {
 				return api.sendMessage("Something went wrong. Its probably your fault " + event.sender_name, event.thread_id);
@@ -18,6 +18,7 @@ exports.run = (api, event) => {
 		});
 	}
 	else {
+		// method 2 - can deal with anything
 		let res = generator(ac);
 		api.sendMessage(res, event.thread_id);
 	}

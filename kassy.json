@@ -1,0 +1,9 @@
+{
+    "name": "acronyms",
+    "version": 1.0,
+    "command": "aym",
+    "startup": "foo.js",
+    "help": [
+        ["{{commandPrefix}}aym <acronym>", "Expands your acronym.", "Expands your acronym randomly."]
+    ]
+}

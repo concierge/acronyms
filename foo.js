@@ -3,7 +3,7 @@ let maker = require('acronym-maker'),
 
 exports.run = (api, event) => {
     if (event.arguments.length !== 2) {
-        return api.sendMessage("WTF are you doing?", event.thead_id);
+        return api.sendMessage("WTF are you doing?", event.thread_id);
     }
 
     let ac = event.arguments[1];
@@ -11,14 +11,14 @@ exports.run = (api, event) => {
 		// method 1
 		maker.create(ac, (err, res) => {
 			if (err) {
-				return api.sendMessage("Something went wrong. Its probably your fault " + event.sender_name, event.thead_id);
+				return api.sendMessage("Something went wrong. Its probably your fault " + event.sender_name, event.thread_id);
 			}
 			let msg = res.join(' ');
-			api.sendMessage(msg, event.thead_id);
+			api.sendMessage(msg, event.thread_id);
 		});
 	}
 	else {
 		let res = generator(ac);
-		api.sendMessage(res, event.thead_id);
+		api.sendMessage(res, event.thread_id);
 	}
 };
